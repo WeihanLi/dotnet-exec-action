@@ -15,3 +15,13 @@ This is a github action for executing C# scripts with dotnet-exec easily
 ### arguments
 
 **Optional**, the arguments to be passed to the script
+
+## Example usage
+
+```yaml
+- name: dotnet-exec
+  uses: WeihanLi/dotnet-exec-action@0.1.0
+  with:
+    script: "./build/build.cs"
+    arguments: "target=test"
+```
