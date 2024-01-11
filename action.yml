@@ -1,6 +1,9 @@
 name: "dotnet-exec"
 author: "Weihan Li"
 description: "dotnet-exec to execute C# scripts"
+branding:
+  icon: 'chevron-right'
+  color: 'black'
 inputs:
   script:
     description: 'Script to execute'
