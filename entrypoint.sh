@@ -1,3 +1,3 @@
 #!/bin/sh
-echo "executinig dotnet-exec $1 --args $2"
-dotnet-exec $1 --args $2
+echo "executinig dotnet-exec $1 $2 --args $3"
+dotnet-exec $1 $2 --args $3
