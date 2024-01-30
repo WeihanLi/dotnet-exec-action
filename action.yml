@@ -12,9 +12,14 @@ inputs:
     description: 'Script arguments'
     required: false
     default: ""
+  options:
+    description: 'Script execute options'
+    required: false
+    default: ""
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.script }}
+    - ${{ input.options }}
     - ${{ inputs.arguments }}
