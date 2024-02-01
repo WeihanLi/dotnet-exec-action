@@ -18,6 +18,7 @@ inputs:
     default: ""
 runs:
   using: 'docker'
+  # image: 'Dockerfile'
   image: 'docker://weihanli/dotnet-exec:latest'
   args:
     - ${{ inputs.script }}
