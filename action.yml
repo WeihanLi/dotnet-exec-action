@@ -22,5 +22,4 @@ runs:
   args:
     - ${{ inputs.script }}
     - ${{ inputs.options }}
-    - "--"
-    - ${{ inputs.arguments }}
+    - "--args=${{ inputs.arguments }}"
