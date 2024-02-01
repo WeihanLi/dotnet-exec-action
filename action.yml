@@ -1,6 +1,6 @@
 name: "dotnet-exec"
 author: "Weihan Li"
-description: "dotnet-exec to execute C# scripts"
+description: "dotnet-exec to execute C# script"
 branding:
   icon: 'chevron-right'
   color: 'black'
@@ -18,8 +18,9 @@ inputs:
     default: ""
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'weihanli/dotnet-exec:0.16.0'
   args:
     - ${{ inputs.script }}
     - ${{ inputs.options }}
+    - "--"
     - ${{ inputs.arguments }}
