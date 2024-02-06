@@ -1,7 +1,7 @@
 // https://docs.github.com/en/rest/releases/releases#get-the-latest-release
 using System.Net.Http.Json;
 
-const string previousRelease = "0.17.0";
+const string previousReleaseTag = "0.17.0";
 
 HttpHelper.HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"Bearer {Environment.GetEnvironmentVariable("GITHUB_TOKEN")}");
 HttpHelper.HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/vnd.github+json");
@@ -27,5 +27,4 @@ foreach (var file in Directory.GetFiles(Environment.CurrentDirectory))
 	Console.WriteLine($"file {file} updated");
 }
 
-
-public sealed record Release(string Name, string TagName, string Body);
+public sealed record Release(string Name, [property: System.Text.Json.Serialization.JsonPropertyName("tag_name")]string TagName, string Body);
