@@ -31,7 +31,7 @@ jobs:
         fi
     - name: Create Pull Request
       if: ${{ env.HAS_CHANGES == 'true' }}
-      uses: peter-evans/create-pull-request@v3
+      uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: "sync upstream release"
