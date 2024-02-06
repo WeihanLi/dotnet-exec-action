@@ -1,0 +1,41 @@
+name: sync-upstream-release
+
+on:
+  schedule:
+    - cron:  '0 1 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: |
+          8.0.x
+        include-prerelease: true
+    - name: install dotnet-exec
+      run: dotnet tool update -g dotnet-execute
+    - name: dotnet-exec info
+      run: dotnet-exec --info
+    - name: Run dotnet-exec
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        if dotnet-exec ./scripts/sync-upstream-release.sh --exit-code; then
+          echo "has_changes=false" >> $GITHUB_ENV
+        else
+          echo "has_changes=true" >> $GITHUB_ENV
+        fi
+    - name: Create Pull Request
+      if: ${{ env.has_changes == 'true' }}
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: "sync upstream release"
+        title: 'Sync Upstream Release'
+        body: >
+          This PR updates the outdated NuGet packages.
+        labels: automated-pr
+        branch: sync-upstream-release
+        base: ${{ github.ref }}
