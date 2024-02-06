@@ -2,7 +2,7 @@ name: sync-upstream-release
 
 on:
   schedule:
-    - cron:  '0 1 * * *'
+    - cron:  '0 1,16 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
