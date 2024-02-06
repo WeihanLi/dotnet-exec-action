@@ -22,7 +22,7 @@ jobs:
     - name: Run dotnet-exec
       run: dotnet-exec ./scripts/sync-upstream-release.cs
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
     - name: Detect changes
       run: |
         if git diff --exit-code; then
