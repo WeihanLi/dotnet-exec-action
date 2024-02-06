@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 
 const string previousRelease = "0.17.0";
 
-HttpHelper.HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"{Environment.GetEnvironmentVariable("GITHUB_TOKEN")}");
+HttpHelper.HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"Bearer {Environment.GetEnvironmentVariable("GITHUB_TOKEN")}");
 HttpHelper.HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/vnd.github+json");
 HttpHelper.HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("X-GitHub-Api-Version", "2022-11-28");
 
