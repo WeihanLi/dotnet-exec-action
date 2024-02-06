@@ -11,9 +11,15 @@ var release = await HttpHelper.HttpClient.GetFromJsonAsync<Release>(releaseCheck
 
 if (release.Name is previousRelease)
 {
-    return 0;
+    return;
 }
 
-return 1;
+foreach (var file in Directory.GetFiles(Environment.CurrentDirectory))
+{
+	var sourceText = File.ReadAllText(file);
+	var replacedText = sourceText.Replace(previousRelease, release.Name);
+	if (replacedText == sourceText) continue;
+	await File.WriteAllTextAsync(file, replacedText);
+}
 
 public sealed record Release(string Name, string Body);

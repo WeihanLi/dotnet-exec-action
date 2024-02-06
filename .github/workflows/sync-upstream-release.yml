@@ -14,21 +14,23 @@ jobs:
         dotnet-version: |
           8.0.x
         include-prerelease: true
-    - name: install dotnet-exec
+    - name: Install dotnet-exec
       run: dotnet tool update -g dotnet-execute
     - name: dotnet-exec info
       run: dotnet-exec --info
     - name: Run dotnet-exec
+      run: dotnet-exec ./scripts/sync-upstream-release.cs
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Detect changes
       run: |
-        if dotnet-exec ./scripts/sync-upstream-release.sh --exit-code; then
-          echo "has_changes=false" >> $GITHUB_ENV
+        if git diff --exit-code; then
+          echo "HAS_CHANGES=false" >> $GITHUB_ENV
         else
-          echo "has_changes=true" >> $GITHUB_ENV
+          echo "HAS_CHANGES=true" >> $GITHUB_ENV
         fi
     - name: Create Pull Request
-      if: ${{ env.has_changes == 'true' }}
+      if: ${{ env.HAS_CHANGES == 'true' }}
       uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
