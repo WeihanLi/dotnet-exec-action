@@ -3,7 +3,7 @@ name: sync-upstream-release
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 1,16 * * *'
+    - cron:  '0 1/1 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,7 +37,7 @@ jobs:
         commit-message: "sync upstream release"
         title: 'Sync Upstream Release'
         body: >
-          This PR updates the outdated NuGet packages.
+          Sync upstream release
         labels: automated-pr
         branch: sync-upstream-release
-        base: ${{ github.ref }}
+        base: main
