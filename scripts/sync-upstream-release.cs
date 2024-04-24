@@ -18,7 +18,7 @@ if (release.TagName is previousRelease)
 }
 
 Console.WriteLine($"New release found: {release}");
-foreach (var file in Directory.GetFiles(Environment.CurrentDirectory, "*", SearchOption.AllDirectories)
+foreach (var file in Directory.GetFiles(Environment.CurrentDirectory, "*", SearchOption.AllDirectories))
 {
 	var sourceText = File.ReadAllText(file);
 	var replacedText = sourceText.Replace(previousRelease, release.Name);
