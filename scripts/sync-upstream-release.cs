@@ -1,7 +1,7 @@
 // https://docs.github.com/en/rest/releases/releases#get-the-latest-release
 using System.Net.Http.Json;
 
-const string previousRelease = "0.17.0";
+const string previousRelease = "0.18.1";
 
 HttpHelper.HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"Bearer {Environment.GetEnvironmentVariable("GITHUB_TOKEN")}");
 HttpHelper.HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/vnd.github+json");
@@ -18,7 +18,10 @@ if (release.TagName is previousRelease)
 }
 
 Console.WriteLine($"New release found: {release}");
-foreach (var file in Directory.GetFiles(Environment.CurrentDirectory))
+foreach (var file in Directory.GetFiles(Environment.CurrentDirectory, new EnumerationOptions()
+{
+	RecurseSubdirectories = true
+}))
 {
 	var sourceText = File.ReadAllText(file);
 	var replacedText = sourceText.Replace(previousRelease, release.Name);
