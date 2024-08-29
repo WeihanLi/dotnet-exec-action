@@ -1,4 +1,4 @@
-FROM weihanli/dotnet-exec:0.22.0
+FROM weihanli/dotnet-exec:0.23.0
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["--help"]
