@@ -19,7 +19,7 @@ inputs:
 runs:
   using: 'docker'
   # image: 'Dockerfile'
-  image: 'docker://weihanli/dotnet-exec:0.25.0'
+  image: 'docker://weihanli/dotnet-exec:0.26.0'
   args:
     - ${{ inputs.script }}
     - ${{ inputs.options }}
