@@ -1,7 +1,7 @@
 // https://docs.github.com/en/rest/releases/releases#get-the-latest-release
 using System.Net.Http.Json;
 
-const string previousRelease = "0.27.0";
+const string previousRelease = "0.28.0";
 
 HttpHelper.HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"Bearer {Environment.GetEnvironmentVariable("GITHUB_TOKEN")}");
 HttpHelper.HttpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/vnd.github+json");

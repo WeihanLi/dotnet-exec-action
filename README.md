@@ -24,7 +24,7 @@ This is a Github action for executing C# scripts with dotnet-exec easily without
 
 ```yaml
 - name: dotnet-exec script
-  uses: WeihanLi/dotnet-exec-action@0.27.0
+  uses: WeihanLi/dotnet-exec-action@0.28.0
   with:
     script: "./build/build.cs" # script text or script path
     options: "--web --debug" # optional
