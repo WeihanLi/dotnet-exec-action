@@ -2,9 +2,9 @@
 
 ## Intro
 
-Github action for [dotnet-exec](https://github.com/WeihanLi/dotnet-exec)
+Github Action for [dotnet-exec](https://github.com/WeihanLi/dotnet-exec)
 
-This is a Github action for executing C# scripts with dotnet-exec easily without setting up the dotnet sdk
+This is a Github action for executing C# scripts with dotnet-exec easily without setting up the .NET SDK
 
 ## Arguments
 
@@ -14,7 +14,7 @@ This is a Github action for executing C# scripts with dotnet-exec easily without
 
 ### options
 
-**Optional**, the more options to be used when executing script
+**Optional**, the more options to be used when executing the script
 
 ### arguments
 
@@ -31,5 +31,5 @@ This is a Github action for executing C# scripts with dotnet-exec easily without
     arguments: "target=test" # optional
 ```
 
-- https://github.com/WeihanLi/markdown-nice/blob/master/.github/workflows/docker.yaml#L34
+- https://github.com/WeihanLi/markdown-nice/blob/master/.github/workflows/docker.yaml
   
