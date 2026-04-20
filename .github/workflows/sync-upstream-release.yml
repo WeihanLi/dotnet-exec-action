@@ -3,7 +3,7 @@ name: sync-upstream-release
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 1/2 * * *'
+    - cron:  '0 1/4 * * *'
 
 permissions:
   pull-requests: write
@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - name: Setup .NET SDK
-      uses: WeihanLi/dotnet-install@0.1.0
+      uses: WeihanLi/dotnet-install@v0.2.0
       with:
         version: '10.0.x'
     - name: Install dotnet-exec
@@ -35,7 +35,7 @@ jobs:
         fi
     - name: Create Pull Request
       if: ${{ env.HAS_CHANGES == 'true' }}
-      uses: peter-evans/create-pull-request@v6
+      uses: peter-evans/create-pull-request@v8
       with:
         commit-message: "sync upstream release"
         title: 'Sync Upstream Release'
