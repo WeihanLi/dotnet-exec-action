@@ -1,8 +1,9 @@
 # directories
-.vs
-.vscode
-.git
-.github
+.vs/
+.vscode/
+.git/
+.github/
+scripts/
 
 # files
 action.yml
